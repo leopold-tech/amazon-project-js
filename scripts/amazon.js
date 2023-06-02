@@ -1,32 +1,41 @@
-const product = [{
-    image: 'images/products/athletic-cotton-socks-6-pairs.jpg',
-    productName: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
-    rating: {
-        stars: 4.5,
-        count: 87
-    },
-    priceCents: 1090 
-}, {
-    image: 'images/products/intermediate-composite-basketball.jpg',
-    productName: 'Intermediate Size Basketball',
-    rating: {
-        stars: 4,
-        count: 127
-    },
-    priceCents: 2095
-}, {
-    image: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-    productName: 'Adults Plain Cotton T-Shirt - 2 Pack',
-    rating: {
-        stars: 4.5,
-        count: 56
-    },
-    priceCents: 799
-}];
+// const product = [{
+//     image: 'images/products/athletic-cotton-socks-6-pairs.jpg',
+//     productName: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
+//     rating: {
+//         stars: 4.5,
+//         count: 87
+//     },
+//     priceCents: 1090 
+// }, {
+//     image: 'images/products/intermediate-composite-basketball.jpg',
+//     productName: 'Intermediate Size Basketball',
+//     rating: {
+//         stars: 4,
+//         count: 127
+//     },
+//     priceCents: 2095
+// }, {
+//     image: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
+//     productName: 'Adults Plain Cotton T-Shirt - 2 Pack',
+//     rating: {
+//         stars: 4.5,
+//         count: 56
+//     },
+//     priceCents: 799
+// }, {
+//     image: 'https://supersimple.dev/projects/amazon/images/products/black-2-slot-toaster.jpg',
+//     productName: '2 Slot Toaster - Black',
+//     rating: {
+//         stars: 5,
+//         count: 2197
+//     },
+//     priceCents: 1899
+// }];
 
+//Using products from products.js file
 let productsHTML = '';
 
-product.forEach((product) => {
+products.forEach((product) => {
     productsHTML += `
         <div class="product-container">
             <div class="product-image-container">
