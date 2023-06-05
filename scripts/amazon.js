@@ -32,7 +32,8 @@
 //     priceCents: 1899
 // }];
 
-//Using products from products.js file
+//Using products from products.js file to populate Products Grid
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -54,7 +55,7 @@ products.forEach((product) => {
             <div class="product-price">$${(product.priceCents/100).toFixed(2)}</div>
 
             <div class="product-quantity-container">
-            <select>
+            <select class='js-quantity-selector-${product.id}'>
                 <option selected value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -82,15 +83,20 @@ products.forEach((product) => {
     `;
 })
 
+// Selecting Products Grid with JS
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-// cartQuantity = document.querySelector('.js-cart-quantity');
 addCartBtn = document.querySelectorAll('.js-add-to-cart-btn');
 addCartBtn.forEach((button) => {
     button.addEventListener('click', () => {
         productName = button.dataset.productName;
         productId = button.dataset.productId;
 
+        // Using option selector to adjust quantity of product
+        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+        const quantity = Number(quantitySelector.value);
+
+        // Adding products to cart - new or same products
         let matchingItem;
 
         cart.forEach((item) => {
@@ -100,16 +106,18 @@ addCartBtn.forEach((button) => {
         });
 
         if (matchingItem) {
-            matchingItem.quantity += 1;
+            matchingItem.quantity += quantity;
         } else {
             cart.push({
                 productId: productId,
                 productName: productName,
-                quantity: 1
+                quantity: quantity
             });
         }
 
+        // Making cart quantity notification interactive
         let itemQuantity = 0;
+        console.log(cart);
 
         cart.forEach((item) => {
             itemQuantity += item.quantity;            
@@ -118,3 +126,5 @@ addCartBtn.forEach((button) => {
         document.querySelector('.js-cart-quantity').innerHTML = itemQuantity;
     });
 });
+
+// Problem - itemQuantity is resetting with new product instead of adding all cart items ==> Solved by using console.log(cart); using forEach loop and adding all item quantities;
